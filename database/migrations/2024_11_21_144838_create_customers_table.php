@@ -17,7 +17,7 @@ Schema::create('customers', function (Blueprint $table) {
  $table->string('firstname');
  $table->integer('age');
  $table->longText('message');
-$table->foreignId('user_id')->constrained();  
+$table->foreignId('user_id')->constrained()->onDelete('cascade');  
  $table->timestamps();
 });
 }
