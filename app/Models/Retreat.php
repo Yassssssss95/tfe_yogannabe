@@ -15,4 +15,13 @@ class Retreat extends Model
         'number_place',
         'address',
     ];
+
+    public function CustomerRetreats(){
+        
+        return $this->hasMany(CustomerRetreat::class())
+    }
+    public function PictureRetreats(){
+        
+        return $this->hasMany(PictureRetreat::class())
+    }
 }

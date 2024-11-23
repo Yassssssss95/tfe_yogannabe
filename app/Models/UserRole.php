@@ -10,4 +10,9 @@ class UserRole extends Model
         'role',
     
     ];
+
+    public function User(){
+        
+        return $this->belongsto(User::class())
+    }
 }

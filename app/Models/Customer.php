@@ -12,4 +12,14 @@ class Customer extends Model
         'age',
         'message',
     ];
+
+    public function User(){
+        
+        return $this->belongsto(User::class())
+    }
+
+    public function CustomerRetreats(){
+        
+        return $this->hasMany(CustomerRetreat::class())
+    }
 }

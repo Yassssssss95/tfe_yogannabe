@@ -64,4 +64,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function Customer(){
+        
+        return $this->hasOne(Customer::class('user_id'))
+    }
+
+    public function UserRole(){
+        
+        return $this->hasMany(UserRole::class('user_id'))
+    }
 }

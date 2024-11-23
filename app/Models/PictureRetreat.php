@@ -10,4 +10,8 @@ class PictureRetreat extends Model
         'path',
         
     ];
+    public function Retreat(){
+        
+        return $this->belongsTo(Retreat::class('retreat_id'))
+    }
 }
