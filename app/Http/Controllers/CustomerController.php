@@ -11,7 +11,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        //Action (on recupère les éléments)
+        $customer= Customer::all();
+
+        //Redirection
+        return view('customer.index', compact('customer'));
     }
 
     /**
@@ -19,7 +23,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customer.create')
     }
 
     /**
@@ -27,7 +31,18 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer= new Customer();
+
+        $customer->lastname= $request->lastname;
+        $customer->firstname=$request->firstname;
+        $customer->age=$request->age;
+        $customer->message=$request->message;
+        
+
+
+        $customer->save();
+
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -35,7 +50,9 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $customer =Customer:: find($id);
+
+        return view('customer.show',compact('customer'));
     }
 
     /**
@@ -43,7 +60,9 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customer =Customer:: find($id);
+
+        return view('customer.edit',compact('customer'));
     }
 
     /**
@@ -51,7 +70,18 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $customer= Customer:: find($id);
+
+        $customer->lastname= $request->lastname;
+        $customer->firstname=$request->firstname;
+        $customer->age=$request->age;
+        $customer->message=$request->message;
+        
+
+
+        $customer->update();
+
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -59,6 +89,9 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer =Customer:: find($id);
+        $customer->update();
+
+        return redirect()->route('customer.index');
     }
 }
