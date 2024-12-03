@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 
-
+Route::get('/maps', function(){
+    return view('maps');
+})->name('maps');
 
 Route::controller(RetreatController::class)->name('retreat.')->group(function () {
     Route::get('retreat/index','index')->name('index'); //retreat.index

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->float('price', 8, 2);
             $table->integer('number_places');
             $table->string('address');
+            $table->string('longitude');
+            $table->string('latitude');
             $table->timestamps();
         });
     }
