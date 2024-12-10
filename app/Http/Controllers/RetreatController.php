@@ -41,13 +41,12 @@ class RetreatController extends Controller
         $retreat->price = $request->price;
         $retreat->number_places=$request->number_places;
         $retreat->address=$request->address;
+        
 
 
+        $file = $request->file('image');
+        $namefile = Storage::disk('public')->put('assets',$file);
 
-        $file = $request->file('retreat');
-        $namefILE = Storage::disk('public')->put('assets',$file);
-
-        $retreat = Retreat::find($id);
         $retreat->picture = $namefile;
         $retreat->save();
 
@@ -100,7 +99,7 @@ class RetreatController extends Controller
     public function destroy(string $id)
     {
         $retreat =Retreat:: find($id);
-        $retreat->update();
+        $retreat->delete();
 
         return redirect()->route('retreat.index');
 
