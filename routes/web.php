@@ -1,11 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RetreatController;
 
 
 Route::get('/maps', function(){
     return view('maps');
 })->name('maps');
+
+Route::get('/hello', function(){
+    return view('hello');
+})->name('hello');
 
 Route::controller(RetreatController::class)->name('retreat.')->group(function () {
     Route::get('retreat/index','index')->name('index'); //retreat.index

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Retreat extends Model
 {
+    protected $table = 'retreat';
+
     protected $fillable = [
         'name',
         'starting_date',
@@ -18,10 +20,10 @@ class Retreat extends Model
 
     public function CustomerRetreats(){
         
-        return $this->hasMany(CustomerRetreat::class())
+        return $this->hasMany(CustomerRetreat::class());
     }
     public function PictureRetreats(){
         
-        return $this->hasMany(PictureRetreat::class())
+        return $this->hasMany(PictureRetreat::class());
     }
 }

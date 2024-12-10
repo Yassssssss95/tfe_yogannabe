@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Retreat;
 
 class RetreatController extends Controller
 {
@@ -12,10 +13,10 @@ class RetreatController extends Controller
     public function index()
     {
         //Action (on recupère les éléments)
-        $retreat= Retreat::all();
+        $retreats= Retreat::all();
 
         //Redirection
-        return view('retreat.index', compact('retreat'));
+        return view('retreat.index', compact('retreats'));
     }
 
     /**
@@ -23,7 +24,7 @@ class RetreatController extends Controller
      */
     public function create()
     {
-        return view('retreat.create')
+        return view('retreat.create');
     }
 
     /**
@@ -42,6 +43,12 @@ class RetreatController extends Controller
         $retreat->address=$request->address;
 
 
+
+        $file = $request->file('retreat');
+        $namefILE = Storage::disk('public')->put('assets',$file);
+
+        $retreat = Retreat::find($id);
+        $retreat->picture = $namefile;
         $retreat->save();
 
         return redirect()->route('retreat.index');
