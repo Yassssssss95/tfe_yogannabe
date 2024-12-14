@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="{{route('retreat.create')}}">Create a retreat</a>
+@extends('layouts.app')
+
+@section('title', 'Détails des retraites')
+
+@section('content')
+
+    <a href="{{route('retreat.create')}}" wire:navigate>Create a retreat</a>
 @foreach($retreats as $retreat)
 <ul>
     <li>Name: {{$retreat->name}}</li>
@@ -15,18 +13,21 @@
     <li>Description: {{$retreat->description}}</li>
     <li>Price: {{$retreat->price}}</li>
     <li>Number places: {{$retreat->number_places}}</li>
-    <li>address: {{address}}</li>
+    <li>address: {{$retreat->address}}</li>
+    <li>longitude: {{$retreat->longitude}}</li>
+    <li>latitude: {{$retreat->latitude}}</li>
+    <img src="{{ asset('/storage/./'.$retreat->image_path) }}"/>
 </ul>
 <a href="{{route('retreat.show',$retreat->id)}}">Show</a>
 <a href="{{route('retreat.edit',$retreat->id)}}">Edit</a>
-<form action="{{route('retreat.delete',$retreat->id)" method="POST">
 
+<form action="{{route('retreat.delete',$retreat->id)}}" method="POST">
 @csrf
-
-@methode('DELETE')
+@method('DELETE')
     <button type="submit">Delete</button>
 
 </form>
 @endforeach
-</body>
-</html>
+
+@endsection
+

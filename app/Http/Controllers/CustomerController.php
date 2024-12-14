@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Customer;
 class CustomerController extends Controller
 {
     /**
@@ -12,10 +12,10 @@ class CustomerController extends Controller
     public function index()
     {
         //Action (on recupère les éléments)
-        $customer= Customer::all();
+        $customers= Customer::all();
 
         //Redirection
-        return view('customer.index', compact('customer'));
+        return view('customer.index', compact('customers'));
     }
 
     /**
@@ -23,7 +23,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customer.create')
+        return view('customer.create');
     }
 
     /**
@@ -90,7 +90,7 @@ class CustomerController extends Controller
     public function destroy(string $id)
     {
         $customer =Customer:: find($id);
-        $customer->update();
+        $customer->delete();
 
         return redirect()->route('customer.index');
     }

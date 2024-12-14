@@ -7,7 +7,7 @@
 </head>
 <body>
     
-<form action="{{route(retreat.store)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('retreat.store')}}" method="POST" enctype="multipart/form-data">
     @csrf 
     @method('POST')
 <div>
@@ -39,9 +39,25 @@
     <input type="text" id="address" name="address">
 </div>
 <div>
+    <label for="longitude">longitude:</label>
+    <input type="text" id="longitude" name="longitude">
+</div>
+<div>
+    <label for="latitude">latitude:</label>
+    <input type="text" id="latitude" name="latitude">
+</div>
+<div>
     <label for="image">image: </label>
     <input type="file" id="image" name="image">
 </div>
 <button type="submit">Créer une nouvelle retraite</button>
 </body>
 </html>
+
+@extends('layouts.app')
+
+@section('title', 'Create an event')
+
+@section('content')
+    @livewire('event-create-form')
+@endsection

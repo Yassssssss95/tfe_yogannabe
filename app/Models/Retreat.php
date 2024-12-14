@@ -16,14 +16,16 @@ class Retreat extends Model
         'price',
         'number_place',
         'address',
+        'longitude',
+        'latitude',
+        'image_path',
     ];
+
+   
 
     public function CustomerRetreats(){
         
         return $this->hasMany(CustomerRetreat::class());
     }
-    public function PictureRetreats(){
-        
-        return $this->hasMany(PictureRetreat::class());
-    }
+    
 }

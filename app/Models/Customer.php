@@ -15,11 +15,11 @@ class Customer extends Model
 
     public function User(){
         
-        return $this->belongsto(User::class())
+        return $this->belongsto(User::class());
     }
 
     public function CustomerRetreats(){
         
-        return $this->hasMany(CustomerRetreat::class())
+        return $this->hasMany(CustomerRetreat::class());
     }
 }

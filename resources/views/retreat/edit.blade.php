@@ -7,10 +7,10 @@
 </head>
 <body>
     
-<form action="{{route('retreat.update',$retreat->id)}}" method="POST">
+<form action="{{route('retreat.update',$retreat->id)}}" method="POST" enctype="multipart/form-data">
     @csrf 
     @method('PUT')
-<div>
+    <div>
     <label for="name">Name: </label>
     <input type="text" id="name" name="name">
 </div>
@@ -38,6 +38,18 @@
     <label for="address">Address: </label>
     <input type="text" id="address" name="address">
 </div>
-<button type="submit">Créer une nouvelle retraite</button>
+<div>
+    <label for="longitude">longitude:</label>
+    <input type="text" id="longitude" name="longitude">
+</div>
+<div>
+    <label for="latitude">latitude:</label>
+    <input type="text" id="latitude" name="latitude">
+</div>
+<div>
+    <label for="image">image: </label>
+    <input type="file" id="image" name="image">
+</div>
+<button type="submit">modifier  retraite</button>
 </body>
 </html>

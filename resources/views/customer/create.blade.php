@@ -7,7 +7,7 @@
 </head>
 <body>
     
-<form action="{{route(customer.store)}}" method="POST">
+<form action="{{route('customer.store')}}" method="POST">
     @csrf 
     @method('POST')
 <div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Retreat;
+use Illuminate\Support\Facades\Storage;
 
 class RetreatController extends Controller
 {
@@ -14,7 +15,6 @@ class RetreatController extends Controller
     {
         //Action (on recupère les éléments)
         $retreats= Retreat::all();
-
         //Redirection
         return view('retreat.index', compact('retreats'));
     }
@@ -41,13 +41,16 @@ class RetreatController extends Controller
         $retreat->price = $request->price;
         $retreat->number_places=$request->number_places;
         $retreat->address=$request->address;
+        $retreat->longitude=$request->longitude;
+        $retreat->latitude=$request->latitude;
+
         
 
 
         $file = $request->file('image');
         $namefile = Storage::disk('public')->put('assets',$file);
 
-        $retreat->picture = $namefile;
+        $retreat->image_path = $namefile;
         $retreat->save();
 
         return redirect()->route('retreat.index');
@@ -77,6 +80,7 @@ class RetreatController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        
         $retreat =Retreat:: find($id);
 
         $retreat->name= $request->name;
@@ -86,6 +90,16 @@ class RetreatController extends Controller
         $retreat->price = $request->price;
         $retreat->number_places=$request->number_places;
         $retreat->address=$request->address;
+        $retreat->longitude=$request->longitude;
+        $retreat->latitude=$request->latitude;
+
+        
+
+
+        $file = $request->file('image');
+        $namefile = Storage::disk('public')->put('assets',$file);
+
+        $retreat->image_path = $namefile;
 
         $retreat->update();
 

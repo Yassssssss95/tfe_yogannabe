@@ -16,8 +16,10 @@
     <li>Price: {{$retreat->price}}</li>
     <li>Number places: {{$retreat->number_places}}</li>
     <li>address: {{$retreat->address}}</li>
+    <li>longitude: {{$retreat->longitude}}</li>
+    <li>latitude: {{$retreat->latitude}}</li>
+    <img src="{{ asset('/storage/./'.$retreat->image_path) }}"/>
 
 </ul>
-<img src="{{ asset('/assets/./'.$retreat->picture) }}" />
 </body>
 </html>
