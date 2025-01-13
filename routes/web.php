@@ -18,6 +18,11 @@ Route::get('/hello', function(){
     return view('hello');
 })->name('hello');
 
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+});
 // Routes pour les retraites
 Route::controller(RetreatController::class)->name('retreat.')->group(function () {
     Route::get('retreat/index','index')->name('index');
