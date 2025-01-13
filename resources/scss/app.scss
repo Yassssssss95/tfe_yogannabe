@@ -1,0 +1,85 @@
+// Variables
+$primary: #2ec4b6;    // Couleur logo/principale
+$background: #f4f6fc; // Blanc froid
+$accent: #ffbd59;     // Couleur pêche pour boutons
+$accent-hover: #f9cd8a; // Hover des boutons
+$white: #ffffff;
+$black: #000000;
+
+
+
+// Typographie
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+$font-primary: 'Playfair Display', serif;
+$font-secondary: 'Open Sans', sans-serif;
+
+@import 'components/navbar';
+@import 'components/footer';
+@import 'components/booking-form';
+@import 'components/home';
+
+
+
+// Styles globaux
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-secondary;
+    font-size: 16px;
+    background-color: $background;
+}
+
+h1, h2, h3, h4 {
+    font-family: $font-primary;
+    color: $primary;
+    margin: 0 0 1rem;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+a {
+    font-weight: 600;
+    color: $primary;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+        text-decoration-color: $primary;
+    }
+}
+
+.btn {
+    background-color: $accent;
+    color: $white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        background-color: $accent-hover;
+        text-decoration: none;
+    }
+}

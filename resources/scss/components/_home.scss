@@ -1,0 +1,217 @@
+.content{
+    background-color: $white;
+.hero {
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    
+    &__intro {
+        position: absolute;
+        left: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $white;
+        max-width: 400px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 1rem;
+            color: $white;
+            font-family: $font-primary;
+        }
+
+        p {
+            font-size: 20px;
+            font-family: $font-secondary;
+        }
+    }
+
+    &__cta {
+        position: absolute;  // Un seul niveau de &__cta
+        top: 50%;
+        right: 40px;
+        transform: translateY(-50%);
+        z-index: 10;
+
+        .btn-cta {
+            background-color: $accent;
+            color: $white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: $accent-hover;
+            }
+        }
+    }
+}
+
+// Presentation section
+.presentation {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;  // Changé en column
+    align-items: center;
+    gap: 2rem;
+
+    &__content {
+        width: 100%;        // Prend toute la largeur
+        text-align: left;
+
+        h1 {
+            font-size: 36px;
+            font-family: $font-primary;
+            color: $primary;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: $black;
+            font-family: $font-secondary;
+        }
+    }
+
+    &__cta {
+        text-align: center;  // Centre le bouton
+        margin-top: 2rem;   // Espace au-dessus du bouton
+        
+        .btn-booking {
+            background-color: $accent;
+            color: $white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+
+            &:hover {
+                background-color: $accent-hover;
+            }
+        }
+    }
+}
+
+// Features section
+.features {
+    padding: 4rem 2rem;
+    
+
+    &__grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .feature {
+        text-align: center;
+        
+        img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-family: $font-primary;
+            color: $primary;
+            font-size: 20px;
+        }
+    }
+}
+
+// Version mobile
+@media (max-width: 768px) {
+    .hero {
+        height: 500px;  // On garde une bonne hauteur
+
+        &__intro {
+            left: 50%;  // Centré horizontalement
+            transform: translate(-50%, -50%);  // Centré horizontalement et verticalement
+            text-align: center;
+            width: 90%;
+            padding: 0 20px;
+            
+            h1 {
+                font-size: 32px;
+                margin-bottom: 1rem;
+            }
+            
+            p {
+                font-size: 18px;
+            }
+        }
+
+        &__cta {
+            position: absolute;
+            bottom: 40px;  // En bas plutôt qu'au milieu
+            left: 50%;    // Centré horizontalement
+            transform: translateX(-50%);
+            top: auto;    // Annule le top: 50%
+            right: auto;  // Annule le right: 40px
+        }
+    }
+
+    .presentation {
+        margin: 2rem auto;
+        padding: 0 1rem;
+
+        &__content {
+            text-align: left;  // Garde le texte aligné à gauche
+
+            h1 {
+                font-size: 28px;
+                text-align: center;  // Seulement le titre centré
+            }
+            
+            p {
+                font-size: 16px;
+                line-height: 1.8;
+            }
+        }
+
+        &__cta {
+            margin-top: 2rem;
+            width: 100%;
+
+            .btn-booking {
+                width: 80%;  // Pas tout à fait 100% pour l'esthétique
+                max-width: 300px;
+            }
+        }
+    }
+
+    .features {
+        padding: 3rem 1rem;
+
+        &__grid {
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .feature {
+            img {
+                width: 70px;
+                height: 70px;
+            }
+
+            h3 {
+                font-size: 20px;
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+}

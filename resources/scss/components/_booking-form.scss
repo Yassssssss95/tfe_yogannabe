@@ -1,0 +1,51 @@
+.booking-form {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: $white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    h1 {
+        text-align: center;
+        color: $primary;  // Changé de $primary-color à $primary
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: $black;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            
+            &:focus {
+                outline: none;
+                border-color: $primary;  // Changé de $primary-color à $primary
+            }
+        }
+    }
+
+    button {
+        background: $primary;  // Changé de $primary-color à $primary
+        color: $white;
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 1.1rem;
+
+        &:hover {
+            background: darken($primary, 10%);
+        }
+    }
+}

@@ -1,0 +1,120 @@
+.footer {
+  background-color: $background;
+  padding: 4rem 2rem 1rem;
+  margin-top: auto;
+
+  &__content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      gap: 2rem;
+      margin-bottom: 2rem;
+
+      .footer__section {
+          flex: 0 1 20%;
+
+          h3 {
+              font-family: $font-primary;
+              color: $primary;
+              font-size: 1.2rem;
+              margin-bottom: 1rem;
+          }
+  
+          p, a {
+              color: $black;
+              line-height: 1.6;
+              font-family: $font-secondary;
+          }
+  
+          ul {
+              list-style: none;
+              padding: 0;
+  
+              li {
+                  margin-bottom: 0.5rem;
+              }
+  
+              a {
+                  text-decoration: none;
+                  
+                  &:hover {
+                      color: $primary;
+                  }
+              }
+          }
+  
+          &.social {
+              .social-icons {
+                  display: flex;
+                  gap: 1rem;
+  
+                  a {
+                      color: $primary;
+                      font-size: 1.5rem;
+                      
+                      &:hover {
+                          color: darken($primary, 10%);
+                      }
+                  }
+              }
+          }
+      }
+  }
+
+  &__bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba($black, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+
+      a {
+          color: $black;
+          text-decoration: none;
+          
+          &:hover {
+              color: $primary;
+          }
+      }
+  }
+  @media (max-width: 768px) {
+    padding: 2rem 1rem 1rem;
+
+    &__content {
+        flex-direction: column;
+        gap: 2rem;
+        
+        .footer__section {
+            flex: 1;
+            width: 100%;
+            text-align: center;
+
+            &.social {
+                .social-icons {
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+
+        p {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            margin: 0.5rem 0;
+        }
+    }
+}
+
+}
+
