@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Storage;
 
 class RetreatController extends Controller
 {
+
+    public function adminIndex()
+{
+    $retreats = Retreat::all();
+    return view('admin.retreats.index', compact('retreats'));
+}
     /**
      * Récupère tous les enregistrements
      */
@@ -24,7 +30,7 @@ class RetreatController extends Controller
      */
     public function create()
     {
-        return view('retreat.create');
+        return view('admin.retreats.create');
     }
 
     /**
@@ -47,13 +53,19 @@ class RetreatController extends Controller
         
 
 
-        $file = $request->file('image');
-        $namefile = Storage::disk('public')->put('assets',$file);
-
-        $retreat->image_path = $namefile;
-        $retreat->save();
-
-        return redirect()->route('retreat.index');
+       // Gestion des images multiples
+       $imagePaths = [];
+       if($request->hasFile('images')) {
+           foreach($request->file('images') as $image) {
+               $path = Storage::disk('public')->put('assets', $image);
+               $imagePaths[] = $path;
+           }
+       }
+       $retreat->image_path = implode(',', $imagePaths);
+   
+       $retreat->save();
+   
+       return redirect()->route('admin.retreats.index')->with('success', 'Retraite créée avec succès');
     }
 
     /**
@@ -63,8 +75,8 @@ class RetreatController extends Controller
     {
         $retreat =Retreat:: find($id);
 
-        return view('retreat.show',compact('retreat'));
-    }
+        return view('admin.retreats.show', compact('retreat')); 
+        }
 
     /**
      * affiche le formulaire de modification
@@ -72,8 +84,8 @@ class RetreatController extends Controller
     public function edit(string $id)
     {
         $retreat =Retreat:: find($id);
-        return view('retreat.edit',compact('retreat'));
-    }
+        return view('admin.retreats.edit', compact('retreat')); 
+        }
 
     /**
      * Modifie l'enregistrement
@@ -103,8 +115,7 @@ class RetreatController extends Controller
 
         $retreat->update();
 
-        return redirect()->route('retreat.index');
-
+        return redirect()->route('admin.retreats.index');
     }
 
     /**
@@ -115,7 +126,6 @@ class RetreatController extends Controller
         $retreat =Retreat:: find($id);
         $retreat->delete();
 
-        return redirect()->route('retreat.index');
-
+        return redirect()->route('admin.retreats.index');
     }
 }
