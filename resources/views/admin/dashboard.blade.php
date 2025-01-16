@@ -1,4 +1,4 @@
-
+<<<<<<< HEAD+
 @extends('layouts.admin')
 
 @section('title', 'Dashboard')
@@ -24,6 +24,6 @@
 <div class="container">
     <h1>Dashboard Admin</h1>
     <p>Bienvenue dans l'interface d'administration</p>
-
+>>>>>>> a12fba7e80548d381f2faf8b04abf0243fe7d4d3
 </div>
 @endsection
