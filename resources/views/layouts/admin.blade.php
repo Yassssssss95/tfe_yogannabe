@@ -11,15 +11,15 @@
         <!-- Sidebar -->
         <aside class="admin-sidebar">
             <div class="sidebar-logo">
-                <img src="{{ asset('assets/icone.png') }}" alt="Yogannabe">
+                <img src="{{ asset('assets/Logo_fd_bleu.png') }}" alt="Yogannabe">
             </div>
             <nav class="sidebar-nav">
                 <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     Dashboard
                 </a>
-                <a href="{{ route('admin.retreats') }}" class="{{ request()->routeIs('admin.retreats*') ? 'active' : '' }}">
-                    Retraites
-                </a>
+                <a href="{{ route('admin.retreats.index') }}" class="{{ request()->routeIs('admin.retreats*') ? 'active' : '' }}">
+    Retraites
+</a>
                 <a href="{{ route('admin.bookings') }}" class="{{ request()->routeIs('admin.bookings*') ? 'active' : '' }}">
                     Réservations
                 </a>

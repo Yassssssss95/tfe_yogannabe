@@ -1,0 +1,181 @@
+// Liste des retraites
+.retreats-list {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.retreat-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    background: $white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    .retreat-info {
+        flex: 1;
+
+        h2 {
+            color: $primary;
+            font-size: 24px;
+            margin-bottom: 1rem;
+        }
+
+        .retreat-dates {
+            color: $black;
+            margin-bottom: 1rem;
+        }
+
+        .retreat-description {
+            color: $black;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .retreat-places {
+            color: $accent;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-more {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: $primary;
+            color: $white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background: darken($primary, 10%);
+            }
+        }
+    }
+
+    .retreat-image {
+        flex: 0 0 400px;
+        
+        img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+    }
+}
+
+// Page de détail d'une retraite
+.retreat-details {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+
+    .retreat-header {
+        text-align: right;
+        margin-bottom: 2rem;
+    }
+
+    .retreat-section {
+        display: flex;
+        gap: 3rem;
+        margin-bottom: 4rem;
+        align-items: flex-start;
+
+        .retreat-main {
+            flex: 1;
+
+            h1 {
+                color: $primary;
+                font-size: 36px;
+                margin-bottom: 1rem;
+            }
+
+            .retreat-dates {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .retreat-image {
+            flex: 1;
+            
+            img {
+                width: 100%;
+                height: 350px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+        }
+
+        .retreat-planning {
+            flex: 1;
+
+            h2 {
+                color: $primary;
+                margin-bottom: 1.5rem;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    padding: 0.5rem 0;
+                    border-bottom: 1px solid #eee;
+                }
+            }
+        }
+
+        .retreat-booking {
+            flex: 1;
+            background: $white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+            .price {
+                font-size: 32px;
+                color: $primary;
+                margin-bottom: 1rem;
+            }
+
+            .places {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+.btn-booking {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: $accent;
+    color: $white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background: $accent-hover;
+    }
+}
+
+// Version mobile
+@media (max-width: 768px) {
+    .retreat-card {
+        flex-direction: column;
+
+        .retreat-image {
+            flex: 0 0 auto;
+            order: -1;  // Image en premier sur mobile
+        }
+    }
+
+    .retreat-content {
+        grid-template-columns: 1fr !important;
+    }
+}

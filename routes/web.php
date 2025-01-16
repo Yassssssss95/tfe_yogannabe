@@ -18,27 +18,32 @@ Route::get('/hello', function(){
     return view('hello');
 })->name('hello');
 
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
+// Routes admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Dashboard admin
+    Route::get('/', function () {
         return view('admin.dashboard');
-    })->name('admin.dashboard');
-});
-// Routes pour les retraites
-Route::controller(RetreatController::class)->name('retreat.')->group(function () {
-    Route::get('retreat/index','index')->name('index');
-    Route::get('retreat/create','create')->name('create');
-    Route::post('retreat/store', 'store')->name('store');
-    Route::get('retreat/edit/{id}', 'edit')->name('edit');
-    Route::put('retreat/update/{id}', 'update')->name('update');
-    Route::get('retreat/show/{id}', 'show')->name('show');
-    Route::delete('retreat/delete/{id}', 'destroy')->name('delete');
-});
+    })->name('dashboard');
+
+    // Routes pour les retraites dans l'admin
+    Route::controller(RetreatController::class)->prefix('retreats')->name('retreats.')->group(function () {
+        Route::get('/', 'adminIndex')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::put('/update/{id}', 'update')->name('update');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::delete('/delete/{id}', 'destroy')->name('delete');
+    });
 
     // Route pour les réservations admin
     Route::get('/bookings', function () {
         return view('admin.bookings.index');
     })->name('bookings');
 });
+
+Route::get('/retreats', [RetreatController::class, 'publicIndex'])->name('retreats.index');
+Route::get('/retreats/{retreat}', [RetreatController::class, 'publicShow'])->name('retreats.show');
 
 // Routes publiques pour les customers
 Route::controller(CustomerController::class)->name('customer.')->group(function () {

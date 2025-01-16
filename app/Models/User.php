@@ -68,11 +68,11 @@ class User extends Authenticatable
 
     public function Customer(){
         
-        return $this->hasOne(Customer::class('user_id'))
+        return $this->hasOne(Customer::class('user_id'));
     }
 
     public function UserRole(){
         
-        return $this->hasMany(UserRole::class('user_id'))
+        return $this->hasMany(UserRole::class('user_id'));
     }
 }

@@ -92,30 +92,31 @@ class RetreatController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
-        $retreat =Retreat:: find($id);
-
-        $retreat->name= $request->name;
-        $retreat->starting_date=$request->starting_date;
-        $retreat->ending_date=$request->ending_date;
-        $retreat->description=$request->description;
+        $retreat = Retreat::find($id);
+    
+        $retreat->name = $request->name;
+        $retreat->starting_date = $request->starting_date;
+        $retreat->ending_date = $request->ending_date;
+        $retreat->description = $request->description;
         $retreat->price = $request->price;
-        $retreat->number_places=$request->number_places;
-        $retreat->address=$request->address;
-        $retreat->longitude=$request->longitude;
-        $retreat->latitude=$request->latitude;
-
-        
-
-
-        $file = $request->file('image');
-        $namefile = Storage::disk('public')->put('assets',$file);
-
-        $retreat->image_path = $namefile;
-
-        $retreat->update();
-
-        return redirect()->route('admin.retreats.index');
+        $retreat->number_places = $request->number_places;
+        $retreat->address = $request->address;
+        $retreat->longitude = $request->longitude;
+        $retreat->latitude = $request->latitude;
+    
+        // Gestion des images multiples
+        if($request->hasFile('images')) {
+            $imagePaths = [];
+            foreach($request->file('images') as $image) {
+                $path = Storage::disk('public')->put('assets', $image);
+                $imagePaths[] = $path;
+            }
+            $retreat->image_path = implode(',', $imagePaths);
+        }
+    
+        $retreat->save();
+    
+        return redirect()->route('admin.retreats.index')->with('success', 'Retraite modifiée avec succès');
     }
 
     /**
@@ -128,4 +129,17 @@ class RetreatController extends Controller
 
         return redirect()->route('admin.retreats.index');
     }
+
+
+    public function publicIndex()
+{
+    $retreats = Retreat::orderBy('starting_date', 'asc')->get();
+    return view('retreats.index', compact('retreats'));
+}
+
+public function publicShow($id)
+{
+    $retreat = Retreat::findOrFail($id);
+    return view('retreats.show', compact('retreat'));
+}
 }

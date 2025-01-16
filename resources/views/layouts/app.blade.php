@@ -15,7 +15,7 @@
         </a>
     </div>
     <div class="navbar__links">
-        <a href="{{ route('retreat.index') }}">Nos retraites</a>
+        <a href="{{ route('retreats.index') }}">Nos retraites</a>
         <a href="{{ route('booking.form') }}">Réserver une retraite</a>
         <a href="{{ route('login') }}">Se connecter</a>
         <a href="{{ route('register') }}" class="btn-signup">S'inscrire</a>

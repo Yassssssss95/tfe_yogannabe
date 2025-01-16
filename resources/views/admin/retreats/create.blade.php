@@ -2,6 +2,12 @@
 
 @section('title', 'Ajouter une retraite')
 
+@section('head')
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP') }}&libraries=places&callback=initialize" async defer></script>
+<script type="text/javascript" src="{{ asset('js/mapinput.js') }}"></script>
+@endsection
+
 @section('content')
 <div class="admin-header">
     <h2>Ajouter une nouvelle retraite</h2>
@@ -46,21 +52,25 @@
         </div>
 
         <div class="form-group">
-            <label for="address">Adresse</label>
-            <input type="text" id="address" name="address" required>
-        </div>
+    <label for="address-input">Adresse</label>
+    <input type="text" class="form-control map-input" id="address-input" required>
+</div>
 
-        <div class="form-row">
-            <div class="form-group">
-                <label for="longitude">Longitude</label>
-                <input type="text" id="longitude" name="longitude" required>
-            </div>
+<div id="address-map-container">
+    <div id="address-map"></div>
+</div>
 
-            <div class="form-group">
-                <label for="latitude">Latitude</label>
-                <input type="text" id="latitude" name="latitude" required>
-            </div>
-        </div>
+<div class="form-row">
+    <div class="form-group">
+        <label for="latitude">Latitude</label>
+        <input type="text" id="address-latitude" name="latitude" readonly required>
+    </div>
+
+    <div class="form-group">
+        <label for="longitude">Longitude</label>
+        <input type="text" id="address-longitude" name="longitude" readonly required>
+    </div>
+</div>
 
         <div class="form-group">
     <label for="image">Images (sélectionnez une ou plusieurs images)</label>
@@ -72,3 +82,4 @@
         </div>
     </form>
 </div>
+@endsection
