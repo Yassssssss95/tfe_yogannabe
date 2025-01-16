@@ -1,3 +1,4 @@
+
 @extends('layouts.admin')
 
 @section('title', 'Dashboard')
@@ -16,5 +17,13 @@
         <h3>Clients inscrits</h3>
         <p class="stat-number">45</p>
     </div>
+=======
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1>Dashboard Admin</h1>
+    <p>Bienvenue dans l'interface d'administration</p>
+
 </div>
 @endsection
