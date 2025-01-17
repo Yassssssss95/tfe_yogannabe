@@ -1,9 +1,10 @@
 .navbar {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-around; 
     align-items: center;
     background-color: $background; 
-    padding: 0 1rem; 
+    padding: 1rem 3rem; 
+    height: 11rem;
     
 
     &__logo {

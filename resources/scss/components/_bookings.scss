@@ -1,0 +1,70 @@
+.my-bookings {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+
+    h1 {
+        color: $primary;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .booking-card {
+        background: $white;
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+        .booking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+
+            h2 {
+                color: $primary;
+                margin: 0;
+            }
+
+            .status {
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                font-weight: 600;
+
+                &.status-pending {
+                    background: #fef3c7;
+                    color: #92400e;
+                }
+
+                &.status-confirmed {
+                    background: #dcfce7;
+                    color: #166534;
+                }
+
+                &.status-cancelled {
+                    background: #fee2e2;
+                    color: #991b1b;
+                }
+            }
+        }
+
+        .booking-details {
+            .dates {
+                margin-bottom: 0.5rem;
+            }
+
+            .price {
+                color: $accent;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+
+            .message {
+                font-style: italic;
+                color: #666;
+            }
+        }
+    }
+}

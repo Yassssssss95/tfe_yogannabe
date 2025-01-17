@@ -1,14 +1,14 @@
 .booking-form {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: $white;
+    max-width: 600px;
+    margin: 5rem auto;
+    padding: 3rem;
+    background: $background;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
     h1 {
         text-align: center;
-        color: $primary;  // Changé de $primary-color à $primary
+        color: $primary; 
         margin-bottom: 2rem;
     }
 
@@ -35,17 +35,18 @@
     }
 
     button {
-        background: $primary;  // Changé de $primary-color à $primary
+        background-color: $accent;
         color: $white;
-        padding: 0.75rem 2rem;
-        border: none;
+        padding: 1rem 3rem;
         border-radius: 4px;
-        cursor: pointer;
-        width: 100%;
-        font-size: 1.1rem;
+        text-decoration: none;
+        border: 1px solid white;
+        transition: all 0.3s ease;
+        display: inline-block;
+        
 
         &:hover {
-            background: darken($primary, 10%);
+            background: $accent-hover;
         }
     }
 }

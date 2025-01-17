@@ -1,7 +1,7 @@
 .content{
     background-color: $white;
 .hero {
-    height: 500px;
+    height: 450px;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -12,7 +12,7 @@
         top: 50%;
         transform: translateY(-50%);
         color: $white;
-        max-width: 400px;
+        max-width: 700px;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 
         h1 {
@@ -20,28 +20,30 @@
             margin-bottom: 1rem;
             color: $white;
             font-family: $font-primary;
+            margin-left: 5rem;
         }
 
         p {
             font-size: 20px;
             font-family: $font-secondary;
+            margin-left: 5rem;
         }
     }
 
     &__cta {
-        position: absolute;  // Un seul niveau de &__cta
+        position: absolute;  
         top: 50%;
-        right: 40px;
+        right: 100px;
         transform: translateY(-50%);
         z-index: 10;
 
         .btn-cta {
             background-color: $accent;
             color: $white;
-            padding: 1rem 2rem;
+            padding: 1rem 3rem;
+            border: 1px solid white;
             border-radius: 4px;
             text-decoration: none;
-            font-weight: 600;
             transition: all 0.3s ease;
 
             &:hover {
@@ -54,15 +56,14 @@
 // Presentation section
 .presentation {
     max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 2rem;
+    margin: 2rem auto;
     display: flex;
-    flex-direction: column;  // Changé en column
+    flex-direction: column;  
     align-items: center;
     gap: 2rem;
 
     &__content {
-        width: 100%;        // Prend toute la largeur
+        width: 100%;        
         text-align: left;
 
         h1 {
@@ -74,23 +75,23 @@
 
         p {
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.5;
             color: $black;
             font-family: $font-secondary;
         }
     }
 
     &__cta {
-        text-align: center;  // Centre le bouton
-        margin-top: 2rem;   // Espace au-dessus du bouton
+        text-align: center; 
+        margin-top: 1rem;  
         
         .btn-booking {
             background-color: $accent;
             color: $white;
-            padding: 1rem 2rem;
+            padding: 1rem 3rem;
             border-radius: 4px;
             text-decoration: none;
-            font-weight: 600;
+            border: 1px solid white;
             transition: all 0.3s ease;
             display: inline-block;
 
@@ -103,7 +104,7 @@
 
 // Features section
 .features {
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     
 
     &__grid {
@@ -135,11 +136,11 @@
 // Version mobile
 @media (max-width: 768px) {
     .hero {
-        height: 500px;  // On garde une bonne hauteur
+        height: 500px;  
 
         &__intro {
-            left: 50%;  // Centré horizontalement
-            transform: translate(-50%, -50%);  // Centré horizontalement et verticalement
+            left: 50%;  
+            transform: translate(-50%, -50%);  
             text-align: center;
             width: 90%;
             padding: 0 20px;
@@ -156,11 +157,11 @@
 
         &__cta {
             position: absolute;
-            bottom: 40px;  // En bas plutôt qu'au milieu
-            left: 50%;    // Centré horizontalement
+            bottom: 40px;  
+            left: 50%;   
             transform: translateX(-50%);
-            top: auto;    // Annule le top: 50%
-            right: auto;  // Annule le right: 40px
+            top: auto;    
+            right: auto; 
         }
     }
 
@@ -169,11 +170,11 @@
         padding: 0 1rem;
 
         &__content {
-            text-align: left;  // Garde le texte aligné à gauche
+            text-align: left;  
 
             h1 {
                 font-size: 28px;
-                text-align: center;  // Seulement le titre centré
+                text-align: center;  
             }
             
             p {
@@ -187,7 +188,7 @@
             width: 100%;
 
             .btn-booking {
-                width: 80%;  // Pas tout à fait 100% pour l'esthétique
+                width: 80%;  
                 max-width: 300px;
             }
         }

@@ -8,7 +8,7 @@
         <p>Découvrez la paix intérieure au cœur de l'Irlande</p>
     </div>
     <div class="hero__cta">
-        <a href="{{ 'retreats.index' }}" class="btn btn-cta">Voir nos séjours</a>
+        <a href="{{ route('retreats.index') }}" class="btn btn-cta">Voir nos séjours</a>
     </div>
 </section>
 

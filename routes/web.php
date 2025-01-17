@@ -40,6 +40,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/bookings', function () {
         return view('admin.bookings.index');
     })->name('bookings');
+
+       // Routes pour les réservations
+       Route::controller(BookingController::class)->prefix('bookings')->name('bookings.')->group(function () {
+        Route::get('/', 'adminIndex')->name('index');
+        Route::put('/{booking}/confirm', 'confirm')->name('confirm');
+        Route::put('/{booking}/cancel', 'cancel')->name('cancel');
+    });
+
 });
 
 Route::get('/retreats', [RetreatController::class, 'publicIndex'])->name('retreats.index');
@@ -57,7 +65,9 @@ Route::controller(CustomerController::class)->name('customer.')->group(function 
 });
 
 // Routes publiques pour les réservations
-Route::controller(BookingController::class)->name('booking.')->group(function () {
-    Route::get('booking/form', 'form')->name('form');
-    Route::post('booking/store', 'store')->name('store');
+Route::middleware(['auth'])->group(function () {
+    Route::get('booking/form', [BookingController::class, 'form'])->name('booking.form');
+    Route::post('booking/store', [BookingController::class, 'store'])->name('booking.store');
+    Route::get('/mes-reservations', [BookingController::class, 'myBookings'])->name('my-bookings');
+
 });

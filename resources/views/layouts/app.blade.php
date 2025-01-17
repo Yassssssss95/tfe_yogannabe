@@ -19,10 +19,15 @@
         <a href="{{ route('retreats.index') }}">Nos retraites</a>
         <a href="{{ route('booking.form') }}">Réserver une retraite</a>
         <a href="{{ route('login') }}">Se connecter</a>
+        <a href="{{ route('my-bookings') }}">Mes réservations</a>
         <a href="{{ route('register') }}" class="btn-signup">S'inscrire</a>
     </div>
 </nav>
-
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
     <main>
         @yield('content')
     </main>
@@ -46,8 +51,8 @@
     <div class="footer__section contact">
       <h3>Contact</h3>
       <p>Yogannabe</p>
-      <p>Adresse : 123 rue du Yoga, Dublin, Irlande</p>
-      <p>Téléphone : (+81) 80-6817-9220</p>
+      <p>Adresse : 123 rue du Yoga, Bruxelles, Belgique</p>
+      <p>Téléphone : (+32) 477-54-59-28</p>
       <p>Email : <a href="mailto:yogannabe@gmail.com">yogannabe@gmail.com</a></p>
     </div>
     <div class="footer__section social">

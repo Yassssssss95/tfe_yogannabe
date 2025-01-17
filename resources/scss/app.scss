@@ -20,6 +20,7 @@ $font-secondary: 'Open Sans', sans-serif;
 @import 'components/home';
 @import 'components/admin';
 @import 'components/retreats';
+@import 'components/bookings';
 
 
 
@@ -29,7 +30,7 @@ body {
     padding: 0;
     font-family: $font-secondary;
     font-size: 16px;
-    background-color: $background;
+    background-color: $white;
 }
 
 h1, h2, h3, h4 {
