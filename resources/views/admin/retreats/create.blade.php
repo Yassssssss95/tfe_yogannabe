@@ -54,6 +54,7 @@
         <div class="form-group">
     <label for="address-input">Adresse</label>
     <input type="text" class="form-control map-input" id="address-input" required>
+    <input type="hidden" name="address" id="address" required>  
 </div>
 
 <div id="address-map-container">

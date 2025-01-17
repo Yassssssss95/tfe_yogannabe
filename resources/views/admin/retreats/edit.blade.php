@@ -54,9 +54,10 @@
 
   
     <div class="form-group">
-            <label for="address-input">Adresse</label>
-            <input type="text" class="form-control map-input" id="address-input" value="{{ $retreat->address }}" required>
-        </div>
+    <label for="address-input">Adresse</label>
+    <input type="text" class="form-control map-input" id="address-input" value="{{ $retreat->address }}">
+    <input type="hidden" name="address" id="address" value="{{ $retreat->address }}" required>
+</div>
 
         <div id="address-map-container">
             <div id="address-map"></div>

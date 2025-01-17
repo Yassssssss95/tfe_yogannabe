@@ -1,5 +1,30 @@
 @extends('layouts.app')
 
+@section('head')
+<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP') }}"></script>
+<script>
+function initMap() {
+    const location = {
+        lat: parseFloat('{{ $retreat->latitude }}'),
+        lng: parseFloat('{{ $retreat->longitude }}')
+    };
+
+    const map = new google.maps.Map(document.getElementById('retreat-map'), {
+        zoom: 15,
+        center: location,
+    });
+
+    const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: '{{ $retreat->name }}'
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initMap);
+</script>
+@endsection
+
 @section('content')
 <div class="retreat-details">
     <div class="retreat-header">
@@ -63,6 +88,11 @@
                 <img src="{{ asset('storage/' . $thirdImage) }}" alt="{{ $retreat->name }}">
             </div>
         @endif
+    </div>
+
+    <div class="retreat-map-section">
+        <h2>Localisation</h2>
+        <div id="retreat-map"></div>
     </div>
 </div>
 @endsection

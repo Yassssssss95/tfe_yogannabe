@@ -38,6 +38,7 @@ class RetreatController extends Controller
      */
     public function store(Request $request)
     {
+        
         $retreat= new Retreat();
 
         $retreat->name= $request->name;
@@ -50,9 +51,7 @@ class RetreatController extends Controller
         $retreat->longitude=$request->longitude;
         $retreat->latitude=$request->latitude;
 
-        
-
-
+    
        // Gestion des images multiples
        $imagePaths = [];
        if($request->hasFile('images')) {
@@ -93,16 +92,21 @@ class RetreatController extends Controller
     public function update(Request $request, string $id)
     {
         $retreat = Retreat::find($id);
-    
+        
         $retreat->name = $request->name;
         $retreat->starting_date = $request->starting_date;
         $retreat->ending_date = $request->ending_date;
         $retreat->description = $request->description;
         $retreat->price = $request->price;
         $retreat->number_places = $request->number_places;
-        $retreat->address = $request->address;
-        $retreat->longitude = $request->longitude;
-        $retreat->latitude = $request->latitude;
+        
+        // Si on reçoit des coordonnées, on met à jour l'adresse
+        if($request->latitude && $request->longitude) {
+            // Si on n'a pas d'adresse, on utilise les coordonnées comme adresse
+            $retreat->address = $request->address ?? "Lat: {$request->latitude}, Long: {$request->longitude}";
+            $retreat->longitude = $request->longitude;
+            $retreat->latitude = $request->latitude;
+        }
     
         // Gestion des images multiples
         if($request->hasFile('images')) {

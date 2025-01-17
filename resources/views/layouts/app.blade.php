@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Yogannabe</title>
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    @yield('head')
 </head>
 <body>
 <nav class="navbar">

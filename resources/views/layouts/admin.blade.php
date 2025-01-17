@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Yogannabe</title>
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    @yield('head')
 </head>
 <body>
     <div class="admin-layout">
