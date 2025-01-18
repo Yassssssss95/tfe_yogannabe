@@ -12,22 +12,51 @@
 <nav class="navbar">
     <div class="navbar__logo">
         <a href="{{ route('home') }}">
-            <img src="{{ asset('assets/icone.png') }}" alt="Yogannabe">
+            <img src="{{ asset('assets/Logo_fd_bleu.png') }}" alt="Yogannabe">
         </a>
     </div>
     <div class="navbar__links">
         <a href="{{ route('retreats.index') }}">Nos retraites</a>
-        <a href="{{ route('booking.form') }}">Réserver une retraite</a>
-        <a href="{{ route('login') }}">Se connecter</a>
-        <a href="{{ route('my-bookings') }}">Mes réservations</a>
-        <a href="{{ route('register') }}" class="btn-signup">S'inscrire</a>
+        
+        @guest
+            {{-- Pour les visiteurs non connectés --}}
+            <a href="{{ route('login') }}">Se connecter</a>
+            <a href="{{ route('register') }}" class="btn-signup">S'inscrire</a>
+        @else
+            {{-- Pour les utilisateurs connectés --}}
+            <a href="{{ route('booking.form') }}">Réserver une retraite</a>
+            <a href="{{ route('my-bookings') }}">Mes réservations</a>
+            
+            @if(auth()->user()->role === 'admin')
+                <a href="{{ route('admin.dashboard') }}">Admin</a>
+            @endif
+
+            <form method="POST" action="{{ route('logout') }}" class="logout-form">
+                @csrf
+                <button type="submit" class="btn-logout">Se déconnecter</button>
+            </form>
+        @endguest
     </div>
 </nav>
-@if (session('success'))
+@if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
 @endif
+
+@if(session('error'))
+    <div class="alert alert-error">
+        {{ session('error') }}
+    </div>
+@endif
+
+@auth
+    @if(request()->is('/'))
+        <div class="welcome-message">
+            Bienvenue {{ auth()->user()->name }} !
+        </div>
+    @endif
+@endauth
     <main>
         @yield('content')
     </main>

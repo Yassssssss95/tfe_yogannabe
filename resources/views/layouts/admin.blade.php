@@ -7,6 +7,11 @@
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
     @yield('head')
 </head>
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <body>
     <div class="admin-layout">
         <!-- Sidebar -->
@@ -15,16 +20,16 @@
                 <img src="{{ asset('assets/Logo_fd_bleu.png') }}" alt="Yogannabe">
             </div>
             <nav class="sidebar-nav">
-                <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                    Dashboard
-                </a>
-                <a href="{{ route('admin.retreats.index') }}" class="{{ request()->routeIs('admin.retreats*') ? 'active' : '' }}">
-    Retraites
-</a>
-                <a href="{{ route('admin.bookings') }}" class="{{ request()->routeIs('admin.bookings*') ? 'active' : '' }}">
-                    Réservations
-                </a>
-            </nav>
+    <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+        Dashboard
+    </a>
+    <a href="{{ route('admin.retreats.index') }}" class="{{ request()->routeIs('admin.retreats*') ? 'active' : '' }}">
+        Retraites
+    </a>
+    <a href="{{ route('admin.bookings.index') }}" class="{{ request()->routeIs('admin.bookings*') ? 'active' : '' }}">
+        Réservations
+    </a>
+</nav>
         </aside>
 
         <!-- Main content -->

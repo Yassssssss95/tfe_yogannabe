@@ -249,3 +249,184 @@ $black: #000000;
         margin-bottom: 10px;
     }
 }
+
+.admin-bookings {
+    .bookings-table {
+        background: $white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        overflow: hidden;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            th, td {
+                padding: 1rem;
+                text-align: left;
+                border-bottom: 1px solid #eee;
+            }
+
+            th {
+                background: $background;
+                font-weight: 600;
+                color: $primary;
+            }
+
+            .status {
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                font-weight: 600;
+
+                &.status-pending {
+                    background: #fef3c7;
+                    color: #92400e;
+                }
+
+                &.status-confirmed {
+                    background: #dcfce7;
+                    color: #166534;
+                }
+
+                &.status-cancelled {
+                    background: #fee2e2;
+                    color: #991b1b;
+                }
+            }
+
+            .actions {
+                display: flex;
+                gap: 0.5rem;
+
+                .btn-confirm, .btn-cancel {
+                    padding: 0.5rem 1rem;
+                    border-radius: 4px;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                }
+
+                .btn-confirm {
+                    background: $primary;
+                    color: white;
+
+                    &:hover {
+                        background: darken($primary, 10%);
+                    }
+                }
+
+                .btn-cancel {
+                    background: #fee2e2;
+                    color: #991b1b;
+
+                    &:hover {
+                        background: darken(#fee2e2, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+.retreat-details {
+    .retreat-info {
+        background: $white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 2rem;
+        
+        .info-section {
+            margin-bottom: 3rem;
+
+            h2 {
+                color: $primary;
+                margin-bottom: 2rem;
+                font-size: 1.5rem;
+            }
+
+            .info-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+                margin-bottom: 2rem;
+
+                .info-item {
+                    label {
+                        display: block;
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                        color: $primary;
+                    }
+
+                    p {
+                        color: $black;
+                    }
+                }
+            }
+
+            .info-description {
+                label {
+                    display: block;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                    color: $primary;
+                }
+
+                p {
+                    line-height: 1.6;
+                }
+            }
+        }
+
+        .participants-section {
+            h2 {
+                color: $primary;
+                margin-bottom: 2rem;
+                font-size: 1.5rem;
+            }
+
+            .participants-table {
+                overflow-x: auto;
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+
+                    th, td {
+                        padding: 1rem;
+                        text-align: left;
+                        border-bottom: 1px solid #eee;
+                    }
+
+                    th {
+                        background: $background;
+                        font-weight: 600;
+                        color: $primary;
+                    }
+
+                    .status {
+                        padding: 0.5rem 1rem;
+                        border-radius: 4px;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+
+                        &.status-pending {
+                            background: #fef3c7;
+                            color: #92400e;
+                        }
+
+                        &.status-confirmed {
+                            background: #dcfce7;
+                            color: #166534;
+                        }
+
+                        &.status-cancelled {
+                            background: #fee2e2;
+                            color: #991b1b;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

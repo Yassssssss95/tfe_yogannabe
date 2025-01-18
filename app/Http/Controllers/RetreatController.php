@@ -71,11 +71,10 @@ class RetreatController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        $retreat =Retreat:: find($id);
-
-        return view('admin.retreats.show', compact('retreat')); 
-        }
+{
+    $retreat = Retreat::with(['bookings.user'])->findOrFail($id);
+    return view('admin.retreats.show', compact('retreat'));
+}
 
     /**
      * affiche le formulaire de modification

@@ -7,21 +7,30 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-
         <!-- Styles -->
-        @livewireStyles
+        @vite(['resources/scss/app.scss', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="font-sans text-gray-900 dark:text-gray-100 antialiased">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar__logo">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('assets/icone.png') }}" alt="Yogannabe">
+                </a>
+            </div>
+            <div class="navbar__links">
+                <a href="{{ route('retreats.index') }}">Nos retraites</a>
+            </div>
+        </nav>
+
+        <!-- Auth content -->
+        <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
 
-        @livewireScripts
+        <!-- Footer -->
+        <footer class="footer">
+            <!-- Votre footer existant -->
+        </footer>
     </body>
 </html>

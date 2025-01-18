@@ -31,7 +31,8 @@
                     <td>{{ $retreat->number_places }}</td>
                     <td>{{ $retreat->price }}€</td>
                     <td class="actions">
-                        <a href="{{ route('admin.retreats.edit', $retreat->id) }}" class="btn-edit">Modifier</a>
+                    <a href="{{ route('admin.retreats.show', $retreat->id) }}" class="btn-view">Voir détails</a>
+                    <a href="{{ route('admin.retreats.edit', $retreat->id) }}" class="btn-edit">Modifier</a>
                         <form action="{{ route('admin.retreats.delete', $retreat->id) }}" method="POST" class="delete-form">
                             @csrf
                             @method('DELETE')

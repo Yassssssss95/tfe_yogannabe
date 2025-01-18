@@ -6,15 +6,15 @@
 <div class="dashboard-stats">
     <div class="stat-card">
         <h3>Retraites actives</h3>
-        <p class="stat-number">5</p>
+        <p class="stat-number">{{ $stats['activeRetreats'] }}</p>
     </div>
     <div class="stat-card">
         <h3>Réservations en attente</h3>
-        <p class="stat-number">12</p>
+        <p class="stat-number">{{ $stats['pendingBookings'] }}</p>
     </div>
     <div class="stat-card">
         <h3>Clients inscrits</h3>
-        <p class="stat-number">45</p>
+        <p class="stat-number">{{ $stats['registeredUsers'] }}</p>
     </div>
 </div>
 @endsection

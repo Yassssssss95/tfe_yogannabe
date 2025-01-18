@@ -1,8 +1,8 @@
 .navbar {
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-between; 
     align-items: center;
-    background-color: $background; 
+    background-color: $primary; 
     padding: 1rem 3rem; 
     height: 11rem;
     
@@ -16,36 +16,72 @@
 
     &__links {
         display: flex;
-        
         align-items: center;
-        gap: 2rem;
-
+        gap: 1rem;
+    
         a {
-
             font-family: $font-primary;
-            color: $black;
+            color: $white;
             text-decoration: none;
-            font-size: 16px;
-            margin: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px;
+            position: relative; 
             
-            &:hover {
-                color: $primary;
-                text-decoration: none;
+            
+            &:not(.btn-signup) {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 2px;
+                    bottom: -5px;
+                    left: 50%;
+                    background-color: $white;
+                    transition: all 0.3s ease;
+                }
+                
+                &:hover {
+                    text-decoration: none;
+                    
+                    &::after {
+                        width: 100%;
+                        left: 0;
+                    }
+                }
             }
-
+    
             &.btn-signup {
-                border: 2px solid $primary;
+                border: 2px solid $background;
                 padding: 0.5rem 1.5rem;
                 border-radius: 4px;
-                color: $primary;
+                color: $background;
                 transition: all 0.3s ease;
-
+    
                 &:hover {
-                    background-color: $primary;
+                    background-color: $accent;
                     color: $white;
                 }
             }
         }
+    }
+    .btn-logout {
+        background: none;
+        border: none;
+        color: $black;
+        cursor: pointer;
+        font-family: $font-primary;
+        font-size: 20px;
+        padding: 0;
+        margin: 0 0 0 2rem;
+
+        &:hover {
+            color: $accent-hover;
+        }
+    }
+
+    .logout-form {
+        display: inline;
     }
 }
 

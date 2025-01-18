@@ -21,11 +21,13 @@ class Retreat extends Model
         'image_path',
     ];
 
-   
-
     public function CustomerRetreats(){
-        
         return $this->hasMany(CustomerRetreat::class());
     }
-    
+
+   
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

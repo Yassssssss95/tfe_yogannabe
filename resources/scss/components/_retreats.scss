@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     gap: 2rem;
-    background: $white;
+    background: $background;
     padding: 2rem;
     margin-bottom: 2rem;
     border-radius: 8px;
@@ -26,6 +26,7 @@
 
         .retreat-dates {
             color: $black;
+            font-weight: bolder;
             margin-bottom: 1rem;
         }
 
@@ -70,9 +71,10 @@
 
 // Page de détail d'une retraite
 .retreat-details {
-    max-width: 1200px;
+    
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 5rem;
+    background-color: $background;
 
     .retreat-header {
         text-align: right;
@@ -124,7 +126,6 @@
 
                 li {
                     padding: 0.5rem 0;
-                    border-bottom: 1px solid #eee;
                 }
             }
         }
@@ -155,6 +156,7 @@
     background: $accent;
     color: $white;
     text-decoration: none;
+    border: 1px solid white;
     border-radius: 4px;
     font-weight: 600;
     transition: background-color 0.3s;

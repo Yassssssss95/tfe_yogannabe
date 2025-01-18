@@ -5,6 +5,7 @@ use App\Http\Controllers\RetreatController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\AdminController;
 
 // Route page d'accueil
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -21,9 +22,7 @@ Route::get('/hello', function(){
 // Routes admin
 Route::prefix('admin')->name('admin.')->group(function () {
     // Dashboard admin
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
 
     // Routes pour les retraites dans l'admin
     Route::controller(RetreatController::class)->prefix('retreats')->name('retreats.')->group(function () {
@@ -36,11 +35,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/delete/{id}', 'destroy')->name('delete');
     });
 
-    // Route pour les réservations admin
-    Route::get('/bookings', function () {
-        return view('admin.bookings.index');
-    })->name('bookings');
-
+  
        // Routes pour les réservations
        Route::controller(BookingController::class)->prefix('bookings')->name('bookings.')->group(function () {
         Route::get('/', 'adminIndex')->name('index');

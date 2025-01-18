@@ -54,7 +54,7 @@ class BookingController extends Controller
 
         // Envoyer un email de confirmation
 
-        return redirect()->route('home')->with('success', 'Votre réservation a bien été prise en compte. Vous recevrez bientôt un email de confirmation.');
+        return redirect()->route('home')->with('success', 'Votre réservation est en attente. Nous reviendrons vers vous par mail le plus rapidement possible.');
     }
 
     public function myBookings()
@@ -80,9 +80,9 @@ public function confirm(Booking $booking)
     $booking->status = 'confirmed';
     $booking->save();
     
-    // Envoyer un email de confirmation au client
     
-    return redirect()->back()->with('success', 'Réservation confirmée');
+    return redirect()->route('admin.bookings.index')
+        ->with('success', 'La réservation a été confirmée avec succès');
 }
 
 public function cancel(Booking $booking)
@@ -90,11 +90,11 @@ public function cancel(Booking $booking)
     $booking->status = 'cancelled';
     $booking->save();
     
-    // Remettre la place disponible
+    // On remet la place disponible
     $booking->retreat->increment('number_places');
     
-    // Envoyer un email d'annulation au client
     
-    return redirect()->back()->with('success', 'Réservation annulée');
+    return redirect()->route('admin.bookings.index')
+        ->with('success', 'La réservation a été annulée avec succès');
 }
 }
