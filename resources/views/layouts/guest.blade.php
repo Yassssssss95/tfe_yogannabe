@@ -15,7 +15,7 @@
         <nav class="navbar">
             <div class="navbar__logo">
                 <a href="{{ route('home') }}">
-                    <img src="{{ asset('assets/icone.png') }}" alt="Yogannabe">
+                    <img src="{{ asset('assets/Logo_fd_bleu.png') }}" alt="Yogannabe">
                 </a>
             </div>
             <div class="navbar__links">

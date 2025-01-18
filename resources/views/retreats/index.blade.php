@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="retreats-list">
-    <div class="retreats-header">
-        <a href="{{ route('booking.form') }}" class="btn-booking">Réserver</a>
-    </div>
+    
     
     @foreach($retreats as $retreat)
     <div class="retreat-card">
@@ -21,6 +19,7 @@
                 Reste {{ $retreat->number_places }} places
             </div>
             <a href="{{ route('retreats.show', $retreat->id) }}" class="btn-more">En savoir plus</a>
+            <a href="{{ route('booking.form') }}" class="btn-booking">Réserver</a>
         </div>
         <div class="retreat-image">
             @php

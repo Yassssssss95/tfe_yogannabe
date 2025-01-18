@@ -97,7 +97,9 @@
             }
 
             .retreat-dates {
-                margin-bottom: 1.5rem;
+                color: $black;
+            font-weight: bolder;
+            margin-bottom: 1rem;
             }
         }
 
@@ -117,12 +119,13 @@
 
             h2 {
                 color: $primary;
-                margin-bottom: 1.5rem;
+                margin: 1rem;
             }
 
             ul {
                 list-style: none;
                 padding: 0;
+                margin-bottom: 1rem;
 
                 li {
                     padding: 0.5rem 0;
@@ -144,7 +147,9 @@
             }
 
             .places {
-                margin-bottom: 2rem;
+                color: $black;
+            font-weight: bolder;
+            margin-bottom: 1rem;
             }
         }
     }

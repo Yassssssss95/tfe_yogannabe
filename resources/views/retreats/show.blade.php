@@ -63,14 +63,22 @@ document.addEventListener('DOMContentLoaded', initMap);
             </div>
         @endif
         <div class="retreat-planning">
-            <h2>Planning</h2>
-            <ul>
-                <li>There are many variations</li>
-                <li>Of passages of Lorem Ipsum available</li>
-                <li>The majority have suffered</li>
-                <li>Alteration in some form</li>
-                <li>Hidden in the middle of text</li>
-            </ul>
+            <h2>Programme</h2>
+            
+                <li>Pratiques de yoga adaptées à tous niveaux</li>
+                <li>Méditations guidées au lever du soleil</li>
+                <li>Ateliers de respiration et de pleine conscience</li>
+                <li>Découverte de la culture irlandaise</li>
+                <li>Randonnées dans des paysages à couper le souffle</li>
+            
+            <h2>Inclus</h2>
+            
+            <li>Hébergement en chambre partagée ou individuelle</li>
+                <li>Tous les cours de yoga</li>
+                <li>Repas végétariens bio</li>
+                <li>Activités culturelles</li>
+                <li>Randonnées accompagnées</li>
+                
         </div>
     </div>
 
