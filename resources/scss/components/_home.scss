@@ -155,87 +155,98 @@
     @media (max-width: 768px) {
         .hero {
             height: 500px;  
-
-            &__slides {
-                flex-direction: column;
-            }
-
+    
             &__slide {
-                width: 100%;
+                min-width: 100%;
+                background-position: center;
+                
+                &::before { 
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.3); // Léger overlay pour meilleure lisibilité
+                }
             }
-
+    
             &__intro {
+                width: 90%;
                 left: 50%;  
                 transform: translate(-50%, -50%);  
                 text-align: center;
-                width: 90%;
                 padding: 0 20px;
                 
                 h1 {
                     font-size: 32px;
-                    margin-bottom: 1rem;
-                    margin-left: 0;
+                    margin: 0 0 1rem 0;
                 }
                 
                 p {
                     font-size: 18px;
-                    margin-left: 0;
+                    margin: 0;
                 }
             }
-
+    
             &__cta {
                 position: absolute;
                 bottom: 40px;  
                 left: 50%;   
                 transform: translateX(-50%);
                 top: auto;    
-                right: auto; 
+                right: auto;
+                text-align: center;
+    
+                .btn-cta {
+                    width: 200px;
+                    text-align: center;
+                }
             }
         }
-
+    
         .presentation {
-            margin: 2rem auto;
-            padding: 0 1rem;
-
+            padding: 2rem 1rem;
+            
             &__content {
-                text-align: left;  
-
                 h1 {
+                    text-align: center;
                     font-size: 28px;
-                    text-align: center;  
                 }
                 
                 p {
+                    padding: 0 1rem;
                     font-size: 16px;
                     line-height: 1.8;
                 }
             }
-
+    
             &__cta {
                 margin-top: 2rem;
                 width: 100%;
-
+                text-align: center;
+    
                 .btn-booking {
-                    width: 80%;  
+                    width: 80%;
                     max-width: 300px;
                 }
             }
         }
-
+    
         .features {
-            padding: 3rem 1rem;
-
             &__grid {
-                flex-direction: column;
-                gap: 3rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); // 2 colonnes sur mobile
+                gap: 2rem;
+                padding: 0 1rem;
             }
-
+    
             .feature {
                 img {
                     width: 70px;
                     height: 70px;
                 }
-
+                
                 h3 {
                     font-size: 20px;
                     margin-top: 1rem;

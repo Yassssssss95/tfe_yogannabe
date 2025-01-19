@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AdminController;
+use App\Http\Middleware\AdminMiddleware;
 
 // Route page d'accueil
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -20,29 +21,26 @@ Route::get('/hello', function(){
 })->name('hello');
 
 // Routes admin
-Route::prefix('admin')->name('admin.')->group(function () {
-    // Dashboard admin
-    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
-
+Route::prefix('admin')->middleware(['auth', AdminMiddleware::class])->group(function () {    
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    
     // Routes pour les retraites dans l'admin
-    Route::controller(RetreatController::class)->prefix('retreats')->name('retreats.')->group(function () {
-        Route::get('/', 'adminIndex')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/store', 'store')->name('store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::put('/update/{id}', 'update')->name('update');
-        Route::get('/show/{id}', 'show')->name('show');
-        Route::delete('/delete/{id}', 'destroy')->name('delete');
+    Route::prefix('retreats')->name('admin.retreats.')->group(function () {
+        Route::get('/', [RetreatController::class, 'adminIndex'])->name('index');
+        Route::get('/create', [RetreatController::class, 'create'])->name('create');
+        Route::post('/store', [RetreatController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [RetreatController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [RetreatController::class, 'update'])->name('update');
+        Route::get('/show/{id}', [RetreatController::class, 'show'])->name('show');
+        Route::delete('/delete/{id}', [RetreatController::class, 'destroy'])->name('delete');
     });
 
-  
-       // Routes pour les réservations
-       Route::controller(BookingController::class)->prefix('bookings')->name('bookings.')->group(function () {
-        Route::get('/', 'adminIndex')->name('index');
-        Route::put('/{booking}/confirm', 'confirm')->name('confirm');
-        Route::put('/{booking}/cancel', 'cancel')->name('cancel');
+    // Routes pour les réservations
+    Route::prefix('bookings')->name('admin.bookings.')->group(function () {
+        Route::get('/', [BookingController::class, 'adminIndex'])->name('index');
+        Route::put('/{booking}/confirm', [BookingController::class, 'confirm'])->name('confirm');
+        Route::put('/{booking}/cancel', [BookingController::class, 'cancel'])->name('cancel');
     });
-
 });
 
 Route::get('/retreats', [RetreatController::class, 'publicIndex'])->name('retreats.index');

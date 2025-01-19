@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Yogannabe</title>
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    @livewireStyles
     @yield('head')
 </head>
 <body>
@@ -23,27 +24,25 @@
     </div>
 
     <div class="navbar__links">
-        <a href="{{ route('retreats.index') }}">Nos retraites</a>
+    <a href="{{ route('retreats.index') }}" wire:navigate>Nos retraites</a>
+    
+    @guest
+        <a href="{{ route('login') }}" wire:navigate>Se connecter</a>
+        <a href="{{ route('register') }}" wire:navigate class="btn-signup">S'inscrire</a>
+    @else
+        <a href="{{ route('booking.form') }}" wire:navigate>Réserver une retraite</a>
+        <a href="{{ route('my-bookings') }}" wire:navigate>Mes réservations</a>
         
-        @guest
-            {{-- Pour les visiteurs non connectés --}}
-            <a href="{{ route('login') }}">Se connecter</a>
-            <a href="{{ route('register') }}" class="btn-signup">S'inscrire</a>
-        @else
-            {{-- Pour les utilisateurs connectés --}}
-            <a href="{{ route('booking.form') }}">Réserver une retraite</a>
-            <a href="{{ route('my-bookings') }}">Mes réservations</a>
-            
-            @if(auth()->user()->role === 'admin')
-                <a href="{{ route('admin.dashboard') }}">Mon dashboard</a>
-            @endif
+        @if(auth()->user()->role === 'admin')
+            <a href="{{ route('admin.dashboard') }}" wire:navigate>Mon dashboard</a>
+        @endif
 
-            <form method="POST" action="{{ route('logout') }}" class="logout-form">
-                @csrf
-                <button type="submit" class="btn-logout">Se déconnecter</button>
-            </form>
-        @endguest
-    </div>
+        <form method="POST" action="{{ route('logout') }}" class="logout-form">
+            @csrf
+            <button type="submit" class="btn-logout">Se déconnecter</button>
+        </form>
+    @endguest
+</div>
 </nav>
 @if(session('success'))
     <div class="alert alert-success">
@@ -107,7 +106,9 @@
     <a href="#">Politique de confidentialité</a>
   </div>
 </footer>
-
+<livewire:cookie-consent />
+    @livewireScripts
+    
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const burger = document.querySelector('.navbar__burger');
@@ -128,6 +129,7 @@
             });
         });
     });
+    
 </script>
 </body>
 </html>

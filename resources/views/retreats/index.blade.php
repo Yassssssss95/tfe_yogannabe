@@ -18,8 +18,10 @@
             <div class="retreat-places">
                 Reste {{ $retreat->number_places }} places
             </div>
+            <div class="buttons-container">
             <a href="{{ route('retreats.show', $retreat->id) }}" class="btn-more">En savoir plus</a>
             <a href="{{ route('booking.form') }}" class="btn-booking">Réserver</a>
+</div>
         </div>
         <div class="retreat-image">
             @php
