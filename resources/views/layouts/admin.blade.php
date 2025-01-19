@@ -17,19 +17,27 @@
         <!-- Sidebar -->
         <aside class="admin-sidebar">
             <div class="sidebar-logo">
-                <img src="{{ asset('assets/Logo_fd_bleu.png') }}" alt="Yogannabe">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('assets/Logo_fd_bleu.png') }}" alt="Yogannabe">
+                </a>
             </div>
             <nav class="sidebar-nav">
-    <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-        Dashboard
-    </a>
-    <a href="{{ route('admin.retreats.index') }}" class="{{ request()->routeIs('admin.retreats*') ? 'active' : '' }}">
-        Retraites
-    </a>
-    <a href="{{ route('admin.bookings.index') }}" class="{{ request()->routeIs('admin.bookings*') ? 'active' : '' }}">
-        Réservations
-    </a>
-</nav>
+                <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                    Dashboard
+                </a>
+                <a href="{{ route('admin.retreats.index') }}" class="{{ request()->routeIs('admin.retreats*') ? 'active' : '' }}">
+                    Retraites
+                </a>
+                <a href="{{ route('admin.bookings.index') }}" class="{{ request()->routeIs('admin.bookings*') ? 'active' : '' }}">
+                    Réservations
+                </a>
+                <form method="POST" action="{{ route('logout') }}" class="logout-form">
+                    @csrf
+                    <button type="submit" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Déconnexion
+                    </button>
+                </form>
+            </nav>
         </aside>
 
         <!-- Main content -->

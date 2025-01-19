@@ -1,219 +1,246 @@
-.content{
+.content {
     background-color: $background;
-.hero {
-    height: 450px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    
-    &__intro {
-        position: absolute;
-        left: 40px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: $white;
-        max-width: 700px;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 
-        h1 {
-            font-size: 54px;
-            margin-bottom: 1rem;
-            color: $white;
-            font-family: $font-primary;
-            margin-left: 5rem;
-        }
-
-        p {
-            font-size: 24px;
-            font-family: $font-secondary;
-            margin-left: 5rem;
-            font-weight: bolder;
-        }
-    }
-
-    &__cta {
-        position: absolute;  
-        top: 50%;
-        right: 100px;
-        transform: translateY(-50%);
-        z-index: 10;
-
-        .btn-cta {
-            background-color: $accent;
-            color: $white;
-            padding: 1rem 3rem;
-            border: 1px solid white;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-
-            &:hover {
-                background-color: $accent-hover;
-            }
-        }
-    }
-}
-
-// Presentation section
-.presentation {
-    max-width: 1200px;
-    margin: 2rem auto;
-    display: flex;
-    flex-direction: column;  
-    align-items: center;
-    gap: 2rem;
-
-    &__content {
-        width: 100%;        
-        text-align: left;
-
-        h1 {
-            font-size: 36px;
-            font-family: $font-primary;
-            color: $primary;
-            margin-bottom: 1.5rem;
-        }
-
-        p {
-            font-size: 16px;
-            line-height: 1.5;
-            color: $black;
-            font-family: $font-secondary;
-        }
-    }
-
-    &__cta {
-        text-align: center; 
-        margin-top: 1rem;  
-        
-        .btn-booking {
-            background-color: $accent;
-            color: $white;
-            padding: 1rem 3rem;
-            border-radius: 4px;
-            text-decoration: none;
-            border: 1px solid white;
-            transition: all 0.3s ease;
-            display: inline-block;
-
-            &:hover {
-                background-color: $accent-hover;
-            }
-        }
-    }
-}
-
-// Features section
-.features {
-    padding: 3rem 2rem;
-    
-
-    &__grid {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    .feature {
-        text-align: center;
-        
-        img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 1rem;
-        }
-
-        h3 {
-            font-family: $font-primary;
-            color: $primary;
-            font-size: 20px;
-        }
-    }
-}
-
-// Version mobile
-@media (max-width: 768px) {
     .hero {
-        height: 500px;  
+        height: 600px;
+        position: relative;
+        overflow: hidden;
+
+        &__slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        &__slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
 
         &__intro {
-            left: 50%;  
-            transform: translate(-50%, -50%);  
-            text-align: center;
-            width: 90%;
-            padding: 0 20px;
-            
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: $white;
+            max-width: 700px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
             h1 {
-                font-size: 32px;
+                font-size: 54px;
                 margin-bottom: 1rem;
+                color: $white;
+                font-family: $font-primary;
+                margin-left: 5rem;
             }
-            
+
             p {
-                font-size: 18px;
+                font-size: 24px;
+                font-family: $font-secondary;
+                margin-left: 5rem;
+                font-weight: bolder;
             }
         }
 
         &__cta {
-            position: absolute;
-            bottom: 40px;  
-            left: 50%;   
-            transform: translateX(-50%);
-            top: auto;    
-            right: auto; 
+            position: absolute;  
+            top: 50%;
+            right: 100px;
+            transform: translateY(-50%);
+            z-index: 10;
+
+            .btn-cta {
+                background-color: $accent;
+                color: $white;
+                padding: 1rem 3rem;
+                border: 1px solid white;
+                border-radius: 4px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background-color: $accent-hover;
+                }
+            }
         }
     }
 
+    // Presentation section
     .presentation {
+        max-width: 1200px;
         margin: 2rem auto;
-        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;  
+        align-items: center;
+        gap: 2rem;
 
         &__content {
-            text-align: left;  
+            width: 100%;        
+            text-align: left;
 
             h1 {
-                font-size: 28px;
-                text-align: center;  
+                font-size: 36px;
+                font-family: $font-primary;
+                color: $primary;
+                margin-bottom: 1.5rem;
             }
-            
+
             p {
                 font-size: 16px;
-                line-height: 1.8;
+                line-height: 1.5;
+                color: $black;
+                font-family: $font-secondary;
             }
         }
 
         &__cta {
-            margin-top: 2rem;
-            width: 100%;
-
+            text-align: center; 
+            margin-top: 1rem;  
+            
             .btn-booking {
-                width: 80%;  
-                max-width: 300px;
+                background-color: $accent;
+                color: $white;
+                padding: 1rem 3rem;
+                border-radius: 4px;
+                text-decoration: none;
+                border: 1px solid white;
+                transition: all 0.3s ease;
+                display: inline-block;
+
+                &:hover {
+                    background-color: $accent-hover;
+                }
             }
         }
     }
 
+    // Features section
     .features {
-        padding: 3rem 1rem;
+        padding: 3rem 2rem;
 
         &__grid {
-            flex-direction: column;
-            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2rem;
         }
 
         .feature {
+            text-align: center;
+            
             img {
-                width: 70px;
-                height: 70px;
+                width: 80px;
+                height: 80px;
+                margin-bottom: 1rem;
             }
 
             h3 {
+                font-family: $font-primary;
+                color: $primary;
                 font-size: 20px;
-                margin-top: 1rem;
             }
         }
     }
-}
+
+    // Version mobile
+    @media (max-width: 768px) {
+        .hero {
+            height: 500px;  
+
+            &__slides {
+                flex-direction: column;
+            }
+
+            &__slide {
+                width: 100%;
+            }
+
+            &__intro {
+                left: 50%;  
+                transform: translate(-50%, -50%);  
+                text-align: center;
+                width: 90%;
+                padding: 0 20px;
+                
+                h1 {
+                    font-size: 32px;
+                    margin-bottom: 1rem;
+                    margin-left: 0;
+                }
+                
+                p {
+                    font-size: 18px;
+                    margin-left: 0;
+                }
+            }
+
+            &__cta {
+                position: absolute;
+                bottom: 40px;  
+                left: 50%;   
+                transform: translateX(-50%);
+                top: auto;    
+                right: auto; 
+            }
+        }
+
+        .presentation {
+            margin: 2rem auto;
+            padding: 0 1rem;
+
+            &__content {
+                text-align: left;  
+
+                h1 {
+                    font-size: 28px;
+                    text-align: center;  
+                }
+                
+                p {
+                    font-size: 16px;
+                    line-height: 1.8;
+                }
+            }
+
+            &__cta {
+                margin-top: 2rem;
+                width: 100%;
+
+                .btn-booking {
+                    width: 80%;  
+                    max-width: 300px;
+                }
+            }
+        }
+
+        .features {
+            padding: 3rem 1rem;
+
+            &__grid {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .feature {
+                img {
+                    width: 70px;
+                    height: 70px;
+                }
+
+                h3 {
+                    font-size: 20px;
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
 }

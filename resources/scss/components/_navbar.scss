@@ -5,12 +5,42 @@
     background-color: $primary; 
     padding: 1rem 3rem; 
     height: 11rem;
-    
+    position: relative;
 
     &__logo {
-       
         img {
             width: 200px;    
+        }
+    }
+
+    &__burger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        position: absolute;
+        right: 3rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+
+        span {
+            width: 25px;
+            height: 3px;
+            background-color: $white;
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+
+        &.active {
+            span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            span:nth-child(2) {
+                opacity: 0;
+            }
+            span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
         }
     }
 
@@ -27,7 +57,6 @@
             font-weight: bold;
             margin: 10px;
             position: relative; 
-            
             
             &:not(.btn-signup) {
                 &::after {
@@ -65,6 +94,7 @@
             }
         }
     }
+
     .btn-logout {
         background: none;
         border: none;
@@ -83,18 +113,22 @@
     .logout-form {
         display: inline;
     }
-}
 
-
-// Version mobile
-@media screen and (max-width: 767px) {
-    .navbar {
+    // Version mobile
+    @media screen and (max-width: 767px) {
         flex-direction: column;
-        align-items: center;
+        height: auto;
         padding: 1rem;
+
+        &__burger {
+            display: flex;
+        }
 
         &__logo {
             margin-bottom: 1rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
 
             img {
                 width: 150px;
@@ -102,12 +136,25 @@
         }
 
         &__links {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: $primary;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 1rem;
+            transition: 0.3s;
+            z-index: 50;
+            gap: 2rem;
+
+            &.active {
+                left: 0;
+            }
 
             a {
-                font-size: 14px;
+                font-size: 18px;
                 margin: 0;
                 text-align: center;
 
@@ -115,6 +162,14 @@
                     padding: 0.5rem 1rem;
                     margin-top: 1rem;
                 }
+            }
+
+            .logout-form {
+                width: auto;
+            }
+
+            .btn-logout {
+                margin: 0;
             }
         }
     }

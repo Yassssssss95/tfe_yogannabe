@@ -25,22 +25,32 @@ $black: #000000;
             width: 150px;
         }
     }
-
     .sidebar-nav {
         display: flex;
         flex-direction: column;
         gap: 1rem;
-
-        a {
+    
+        a, form button {
             color: $white;
+            font-size: 18px;
+            font-weight: 600;
             text-decoration: none;
             padding: 0.75rem 1rem;
             border-radius: 4px;
             transition: background-color 0.3s;
-
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+    
             &:hover, &.active {
                 background-color: rgba($white, 0.1);
             }
+        }
+    
+        form {
+            width: 100%;
         }
     }
 }

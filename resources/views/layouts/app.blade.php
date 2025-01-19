@@ -15,6 +15,13 @@
             <img src="{{ asset('assets/Logo_fd_bleu.png') }}" alt="Yogannabe">
         </a>
     </div>
+    
+    <div class="navbar__burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
     <div class="navbar__links">
         <a href="{{ route('retreats.index') }}">Nos retraites</a>
         
@@ -28,7 +35,7 @@
             <a href="{{ route('my-bookings') }}">Mes réservations</a>
             
             @if(auth()->user()->role === 'admin')
-                <a href="{{ route('admin.dashboard') }}">Admin</a>
+                <a href="{{ route('admin.dashboard') }}">Mon dashboard</a>
             @endif
 
             <form method="POST" action="{{ route('logout') }}" class="logout-form">
@@ -100,5 +107,27 @@
     <a href="#">Politique de confidentialité</a>
   </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const burger = document.querySelector('.navbar__burger');
+        const navLinks = document.querySelector('.navbar__links');
+
+        burger.addEventListener('click', () => {
+            // Toggle des classes pour l'animation
+            burger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        const links = document.querySelectorAll('.navbar__links a, .navbar__links .logout-form button');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    });
+</script>
 </body>
 </html>
