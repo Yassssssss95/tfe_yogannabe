@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Route;
 
 class CookieConsent extends Component
 {
@@ -10,16 +11,21 @@ class CookieConsent extends Component
     public $necessary = true;
     public $analytics = false;
     public $marketing = false;
+    public $isHomePage = false;
 
     public function mount()
     {
+        // Vérifie si on est sur la page d'accueil
+        $this->isHomePage = Route::currentRouteName() === 'home';
+
         if (isset($_COOKIE['cookie_consent'])) {
             $consent = json_decode($_COOKIE['cookie_consent'], true);
             $this->analytics = $consent['analytics'] ?? false;
             $this->marketing = $consent['marketing'] ?? false;
             $this->showBanner = false;
         } else {
-            $this->showBanner = true;
+            // Ne montre le bandeau que sur la page d'accueil
+            $this->showBanner = $this->isHomePage;
         }
     }
 
